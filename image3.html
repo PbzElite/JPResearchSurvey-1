@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Survey - Image 3</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question-label {
+            font-weight: bold;
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emotion Survey - Image 3</h1>
+
+    <!-- Display Image -->
+    <div class="image-container">
+        <img src="image3.jpg" alt="Survey Image 3" style="max-width: 100%; height: auto;">
+    </div>
+    <label>AI-Generated Image</label>
+
+
+    <form id="emotion-survey-form2">
+        <!-- General Question -->
+        <div class="question">
+            <label class="question-label">Which emotions were evoked after viewing image 4?</label><br>
+            <input type="checkbox" name="emotions" value="happiness" id="happiness"> Happiness<br>
+            <input type="checkbox" name="emotions" value="sadness" id="sadness"> Sadness<br>
+            <input type="checkbox" name="emotions" value="anger" id="anger"> Anger<br>
+            <input type="checkbox" name="emotions" value="fear" id="fear"> Fear<br>
+            <input type="checkbox" name="emotions" value="surprise" id="surprise"> Surprise<br>
+            <input type="checkbox" name="emotions" value="disgust" id="disgust"> Disgust<br>
+        </div>
+
+        <!-- Follow-up Questions -->
+        <div id="follow-up-questions" class="hidden">
+            <!-- Happiness Follow-up -->
+            <div id="happiness-question" class="question hidden">
+                <label class="question-label">Rate your level of happiness after viewing the image:</label><br>
+                <input type="radio" name="happiness_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="happiness_after" value="2"> 2<br>
+                <input type="radio" name="happiness_after" value="3"> 3<br>
+                <input type="radio" name="happiness_after" value="4"> 4<br>
+                <input type="radio" name="happiness_after" value="5"> 5 - Extremely<br>
+            </div>
+
+            <!-- Similar sections for sadness, anger, fear, surprise, disgust -->
+            <div id="sadness-question" class="question hidden">
+                <label class="question-label">Rate your level of sadness after viewing the image:</label><br>
+                <input type="radio" name="sadness_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="sadness_after" value="2"> 2<br>
+                <input type="radio" name="sadness_after" value="3"> 3<br>
+                <input type="radio" name="sadness_after" value="4"> 4<br>
+                <input type="radio" name="sadness_after" value="5"> 5 - Extremely<br>
+            </div>
+
+            <!-- Anger Follow-up -->
+            <div id="anger-question" class="question hidden">
+                <label class="question-label">Rate your level of anger after viewing the image:</label><br>
+                <input type="radio" name="anger_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="anger_after" value="2"> 2<br>
+                <input type="radio" name="anger_after" value="3"> 3<br>
+                <input type="radio" name="anger_after" value="4"> 4<br>
+                <input type="radio" name="anger_after" value="5"> 5 - Extremely<br>
+            </div>
+
+            <!-- Fear Follow-up -->
+            <div id="fear-question" class="question hidden">
+                <label class="question-label">Rate your level of fear after viewing the image:</label><br>
+                <input type="radio" name="fear_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="fear_after" value="2"> 2<br>
+                <input type="radio" name="fear_after" value="3"> 3<br>
+                <input type="radio" name="fear_after" value="4"> 4<br>
+                <input type="radio" name="fear_after" value="5"> 5 - Extremely<br>
+            </div>
+
+            <!-- Surprise Follow-up -->
+            <div id="surprise-question" class="question hidden">
+                <label class="question-label">Rate your level of surprise after viewing the image:</label><br>
+                <input type="radio" name="surprise_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="surprise_after" value="2"> 2<br>
+                <input type="radio" name="surprise_after" value="3"> 3<br>
+                <input type="radio" name="surprise_after" value="4"> 4<br>
+                <input type="radio" name="surprise_after" value="5"> 5 - Extremely<br>
+            </div>
+
+            <!-- Disgust Follow-up -->
+            <div id="disgust-question" class="question hidden">
+                <label class="question-label">Rate your level of disgust after viewing the image:</label><br>
+                <input type="radio" name="disgust_after" value="1"> 1 - Not at all<br>
+                <input type="radio" name="disgust_after" value="2"> 2<br>
+                <input type="radio" name="disgust_after" value="3"> 3<br>
+                <input type="radio" name="disgust_after" value="4"> 4<br>
+                <input type="radio" name="disgust_after" value="5"> 5 - Extremely<br>
+            </div>
+
+        </div>
+
+        <div class="question">
+            <button onclick="pageFive()" type="button">Next</button>
+        </div>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script> 
+    <script src="./config.js"></script>
+
+    <script>
+        // Handle dynamic display of follow-up questions
+        const checkboxes = document.querySelectorAll('input[name="emotions"]');
+        const followUpSection = document.getElementById('follow-up-questions');
+
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('change', () => {
+                const isChecked = checkbox.checked;
+                const questionId = checkbox.value + '-question';
+                const questionElement = document.getElementById(questionId);
+
+                if (isChecked) {
+                    followUpSection.classList.remove('hidden');
+                    questionElement.classList.remove('hidden');
+                } else {
+                    questionElement.classList.add('hidden');
+                    const remainingVisible = Array.from(checkboxes).some(cb => cb.checked);
+                    if (!remainingVisible) {
+                        followUpSection.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Study Survey</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question-label {
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Study Survey</h1>
+    <form id="survey-form">
+        <!-- AI Experience Question -->
+        <!--
+        <div class="question">
+            <label class="question-label" for="ai-experience">What is your experience with AI-generated content? (DALL-E 2, Midjourney, etc.)</label>
+            <textarea id="ai-experience" name="ai_experience"></textarea>
+        </div>
+        -->
+
+        <!-- Rate Happiness Before Study -->
+        <div class="question">
+            <label class="question-label">Rate your state of happiness right now (before study):</label><br>
+            <input type="radio" name="happiness_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="happiness_before" value="2"> 2<br>
+            <input type="radio" name="happiness_before" value="3"> 3<br>
+            <input type="radio" name="happiness_before" value="4"> 4<br>
+            <input type="radio" name="happiness_before" value="5"> 5 - Extremely<br>
+        </div>
+
+        <!-- Add more questions here -->
+
+        <div class="question">
+            <label class="question-label">Rate your state of sadness right now (before study):</label><br>
+            <input type="radio" name="sadness_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="sadness_before" value="2"> 2<br>
+            <input type="radio" name="sadness_before" value="3"> 3<br>
+            <input type="radio" name="sadness_before" value="4"> 4<br>
+            <input type="radio" name="sadness_before" value="5"> 5 - Extremely<br>
+        </div>
+
+
+<div class="question">
+            <label class="question-label">Rate your state of anger right now (before study):</label><br>
+            <input type="radio" name="anger_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="anger_before" value="2"> 2<br>
+            <input type="radio" name="anger_before" value="3"> 3<br>
+            <input type="radio" name="anger_before" value="4"> 4<br>
+            <input type="radio" name="anger_before" value="5"> 5 - Extremely<br>
+        </div>
+
+
+<div class="question">
+            <label class="question-label">Rate your state of fear right now (before study):</label><br>
+            <input type="radio" name="anger_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="fear_before" value="2"> 2<br>
+            <input type="radio" name="fear_before" value="3"> 3<br>
+            <input type="radio" name="fear_before" value="4"> 4<br>
+            <input type="radio" name="fear_before" value="5"> 5 - Extremely<br>
+        </div>
+
+
+<div class="question">
+            <label class="question-label">Rate your state of surprise right now (before study):</label><br>
+            <input type="radio" name="surprise_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="surprise_before" value="2"> 2<br>
+            <input type="radio" name="surprise_before" value="3"> 3<br>
+            <input type="radio" name="surprise_before" value="4"> 4<br>
+            <input type="radio" name="surprise_before" value="5"> 5 - Extremely<br>
+        </div>
+
+
+<div class="question">
+            <label class="question-label">Rate your state of disgust right now (before study):</label><br>
+            <input type="radio" name="disgust_before" value="1"> 1 - Not at all<br>
+            <input type="radio" name="disgust_before" value="2"> 2<br>
+            <input type="radio" name="disgust_before" value="3"> 3<br>
+            <input type="radio" name="disgust_before" value="4"> 4<br>
+            <input type="radio" name="disgust_before" value="5"> 5 - Extremely<br>
+        </div>
+
+
+        <div class="question"> 
+            <button id="pgOne" type="button">Next</button>
+        </div>
+    </form>
+
+    <script>
+        window.onload = function() {
+            console.log("reset")
+            // Call this when the page reloads or before the survey starts again
+            localStorage.removeItem("emotionVals");  // Clear the saved data
+            
+            //make sure the array is empty now
+            window.emotionVals = [];
+
+            console.log(localStorage);
+            console.log(emotionVals)
+        }
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>    
+    <script src="./config.js"></script>
+
+</body>
+</html>
